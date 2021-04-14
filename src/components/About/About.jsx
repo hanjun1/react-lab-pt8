@@ -5,7 +5,7 @@ import Description from '../Description/Description';
 function About(props) {
     return (
         <div className="col outline">
-            <Intro imgURL={props.imgURL} name={props.name} email={props.email}/>
+            <Intro imgURL={props.imgURL} name={props.name} email={props.email} checkStatus={props.checkStatus} buttonLabel={props.buttonLabel}/>
             <Description />
         </div>
     );

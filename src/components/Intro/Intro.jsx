@@ -9,6 +9,9 @@ function Intro(props) {
                 <p>Name: {props.name}</p>
                 <p>Email: {props.email}</p>
             </div>
+            <div>
+                <button onClick={props.checkStatus}>{props.buttonLabel}</button>
+            </div>
         </div>
     );
 }

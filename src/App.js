@@ -6,8 +6,35 @@ import ProjectList from "./components/ProjectList/ProjectList";
 
 class App extends React.Component {
   state = {
-    name: "Ryan",
-    email: "ryan@gmail.com",
+    name: "",
+    email: "",
+    isLoggedIn: false,
+    buttonLabel: "Login",
+  };
+  loginUser = () => {
+    this.setState({
+      name: "Ryan",
+      email: "ryan@gmail.com",
+      isLoggedIn: true,
+    });
+  };
+  logoutUser = () => {
+    this.setState({
+      name: "",
+      email: "",
+      isLoggedIn: false,
+    });
+  };
+  checkStatus = () => {
+    if (this.state.isLoggedIn) {
+      this.setState({ buttonLabel: "Login" }, () => {
+        this.logoutUser();
+      });
+    } else {
+      this.setState({ buttonLabel: "Logout" }, () => {
+        this.loginUser();
+      });
+    }
   };
   render() {
     return (
@@ -18,6 +45,8 @@ class App extends React.Component {
           }
           name={this.state.name}
           email={this.state.email}
+          checkStatus={this.checkStatus}
+          buttonLabel={this.state.buttonLabel}
         />
         <ProjectList />
       </div>
