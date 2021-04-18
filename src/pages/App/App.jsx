@@ -1,55 +1,26 @@
 import React, { Component } from "react";
 import "./App.css";
-import About from "../../components/About/About";
-import ProjectList from "../../components/ProjectList/ProjectList";
-import Form from "../../components/Form/Form"
+import { Route, Switch, Redirect, Link } from 'react-router-dom';
+import Home from '../HomePage/HomePage'
+import Blog from '../BlogPage/BlogPage'
 
 class App extends React.Component {
-  state = {
-    name: "",
-    email: "",
-    isLoggedIn: false,
-    buttonLabel: "Login",
-  };
-  loginUser = () => {
-    this.setState({
-      name: "Ryan",
-      email: "ryan@gmail.com",
-      isLoggedIn: true,
-    });
-  };
-  logoutUser = () => {
-    this.setState({
-      name: "",
-      email: "",
-      isLoggedIn: false,
-    });
-  };
-  checkStatus = () => {
-    if (this.state.isLoggedIn) {
-      this.setState({ buttonLabel: "Login" }, () => {
-        this.logoutUser();
-      });
-    } else {
-      this.setState({ buttonLabel: "Logout" }, () => {
-        this.loginUser();
-      });
-    }
-  };
   render() {
     return (
       <div className="App outline">
-        <About
-          imgURL={
-            "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/1.png"
-          }
-          name={this.state.name}
-          email={this.state.email}
-          checkStatus={this.checkStatus}
-          buttonLabel={this.state.buttonLabel}
-        />
-        <ProjectList />
-        <Form />
+        <nav className="nav">
+          <Link to='/'>Home</Link>
+          <Link to='/blog'>Blog</Link>
+        </nav>
+        <Switch>
+          <Route path="/blog" render={(props) => (
+            <Blog {...props}/>
+          )}/>
+          <Route path="/" render={(props) => (
+            <Home {...props}/>
+          )}/>
+          <Redirect to="/" />
+        </Switch>
       </div>
     );
   }
