@@ -1,8 +1,8 @@
-import logo from "./logo.svg";
 import React, { Component } from "react";
 import "./App.css";
-import About from "./components/About/About";
-import ProjectList from "./components/ProjectList/ProjectList";
+import About from "../../components/About/About";
+import ProjectList from "../../components/ProjectList/ProjectList";
+import Form from "../../components/Form/Form"
 
 class App extends React.Component {
   state = {
@@ -49,6 +49,7 @@ class App extends React.Component {
           buttonLabel={this.state.buttonLabel}
         />
         <ProjectList />
+        <Form />
       </div>
     );
   }
