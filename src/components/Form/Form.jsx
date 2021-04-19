@@ -25,7 +25,7 @@ class Form extends React.Component {
             },
             body: JSON.stringify(body),
         };
-        await fetch("/api", options)
+        await fetch("/api/post", options)
             .then(res => res.json())
             .then( data => {
             this.setState({ 
